@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Films</title>
     <link rel="stylesheet" href="Films.css">
 </head>
 <body>
@@ -13,15 +13,42 @@
                 <h1>DrissBest</h1>
             </div>
             <form action="">
-                <input type="text" placeholder="Rechercher un film">
+                <input onkeyup="RechercherFilm(this.value)" type="text" placeholder="Rechercher un film">
             </form>
             <nav>
+                <strong style="color: rgb(199, 122, 7);">lllll</strong>
                <a href="Accueil.html">Accueil</a>
                <a href="Ajoute.html">Add Film</a>
                <a href="Films.html">Films</a>
             </nav>
          </header>
-       
+         <div id="details"></div>
     </div>
+
+    <script>
+        let movis = JSON.parse(localStorage.getItem('movises')) || [];
+        
+        function showMovis() {
+            let detailsContainer = document.getElementById('details');
+            detailsContainer.innerHTML = ''; 
+
+            for (let i = 0; i < movis.length; i++) {
+                detailsContainer.innerHTML += `
+                <div class="film">
+                    <img src="${movis[i].img}" alt="Film Image">
+                    <p>
+                        <strong>Titre:</strong> ${movis[i].titre} <br>
+                        <strong>Réalisateur:</strong> ${movis[i].realisateur} <br>
+                        <strong>Description:</strong> ${movis[i].description} <br>
+                        <strong>Date:</strong> ${movis[i].date}
+                    </p>
+                </div>`;
+            }
+        }
+
+        
+
+        showMovis();
+    </script>
 </body>
 </html>
