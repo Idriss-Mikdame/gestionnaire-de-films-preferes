@@ -22,13 +22,13 @@ function Ajouter() {
         movis.push(newmovi);
     } else {
         movis[tmp] = newmovi;
-        mood = 'Ajouter'; // ✅ تصحيح الخطأ هنا
+        mood = 'Ajouter'; 
     }
 
     localStorage.setItem('movises', JSON.stringify(movis));
     clearData();
 
-    location.assign('Accueil.html'); // ✅ الانتقال بعد الحفظ
+    location.assign('Accueil.html'); 
 }
 
 function clearData() {
@@ -55,4 +55,8 @@ function showMovis() {
     }
     container.innerHTML = table;
 }
-
+function supprimerFilm(i) {
+    movis.splice(i, 1);
+    localStorage.setItem('movises', JSON.stringify(movis));
+    showMovis();
+}
