@@ -47,6 +47,26 @@
         }
 
         
+function RechercherFilm(value) {
+            let detailsContainer = document.getElementById('details');
+            detailsContainer.innerHTML = ''; // تفريغ المحتوى قبل إعادة العرض
+
+            for (let i = 0; i < movis.length; i++) {
+                if (movis[i].titre.toLowerCase().includes(value.toLowerCase())) {
+                    detailsContainer.innerHTML += `
+                    <div class="film">
+                        <img src="${movis[i].img}" alt="Film Image">
+                        <p>
+                            <strong  >Titre:</strong> ${movis[i].titre} <br>
+                            <strong  >Réalisateur:</strong> ${movis[i].realisateur} <br>
+                            <strong  >Description:</strong> ${movis[i].description} <br>
+                            <strong  >Date:</strong> ${movis[i].date}
+                        </p>
+                    </div>`;
+                }
+            }
+        }
+
 
         showMovis();
     </script>
