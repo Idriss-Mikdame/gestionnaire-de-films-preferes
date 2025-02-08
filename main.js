@@ -60,3 +60,8 @@ function supprimerFilm(i) {
     localStorage.setItem('movises', JSON.stringify(movis));
     showMovis();
 }
+
+function modifierFilm(i) {
+    localStorage.setItem('editIndex', i); 
+    location.assign('Ajoute.html'); 
+}
