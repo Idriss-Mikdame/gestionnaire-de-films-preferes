@@ -65,3 +65,29 @@ function modifierFilm(i) {
     localStorage.setItem('editIndex', i); 
     location.assign('Ajoute.html'); 
 }
+document.addEventListener('DOMContentLoaded', function () {
+    let editIndex = localStorage.getItem('editIndex');
+
+    if (editIndex !== null && titre) {
+        editIndex = parseInt(editIndex); 
+
+        let movis = localStorage.movises ? JSON.parse(localStorage.movises) : [];
+        
+        if (movis.length > editIndex) { 
+            let film = movis[editIndex];
+
+            titre.value = film.titre;
+            realisateur.value = film.realisateur;
+            description.value = film.description;
+            date.value = film.date;
+            img.value = film.img;
+            button.innerHTML = 'Modifier';
+            mood = 'Modifier';
+            tmp = editIndex;
+        }
+
+        localStorage.removeItem('editIndex'); 
+    }
+
+    showMovis(); 
+});
